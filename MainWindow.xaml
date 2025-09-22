@@ -10,11 +10,11 @@
         SizeChanged="Window_SizeChanged" Background="#FFEEE1E1">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="80"/>
             <RowDefinition x:Name="gridBorder" Height="150"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Border x:Name="mainBorder" Grid.Row="2" Width="800" CornerRadius="10" BorderThickness="5" >
@@ -31,11 +31,26 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Height="50" Width="1000" VerticalAlignment="Center">
-            <Label Height="50" Width="1000" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Currency Converter" FontSize="36" Foreground="#ec2075" FontWeight="Bold" FontFamily="Britannic Bold"></Label>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" Height="80" Width="1000">
+
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Title centered across whole window -->
+            <Label Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Currency Converter" FontSize="36" Foreground="#ec2075" FontWeight="Bold" FontFamily="Britannic Bold" Margin="0 25 0 0"/>
+
+            <!-- Right side labels -->
+            <StackPanel Grid.Column="1" Orientation="Vertical"
+                HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Label Name="DateAndTimeLabel" FontSize="18" HorizontalContentAlignment="Right"/>
+                <Label Name="dateStamp" FontSize="18" HorizontalContentAlignment="Right"/>
+                <Label Name="timeStamp" FontSize="18" HorizontalContentAlignment="Right"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Height="80" Width="1000">
             <Label Name="lblCurrency" Height="80" Width="1000" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"></Label>
         </StackPanel>
         <StackPanel x:Name="borderLabels" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="800">
@@ -66,6 +81,9 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Label x:Name="lblResult" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" FontSize="18" FontWeight="Light"></Label>
         </StackPanel>
     </Grid>
 </Window>
